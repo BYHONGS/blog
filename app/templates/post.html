@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}{{ post.title }} - {{ site_name }}{% endblock %}
+{% block meta_description %}{{ post.description }}{% endblock %}
+{% block canonical %}{{ url_for('main.post', slug=post.slug, _external=True) }}{% endblock %}
+{% block content %}
+<article class="post">
+  <header class="post-header">
+    <h1>{{ post.title }}</h1>
+    <time>{{ post.date.strftime('%Y-%m-%d') }}</time>
+  </header>
+  <div class="post-content">{{ post.html | safe }}</div>
+</article>
+{% endblock %}

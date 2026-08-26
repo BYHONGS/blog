@@ -1,0 +1,7 @@
+sites:
+  - name: GitHub
+    url: https://github.com/BYHONGS
+    description: 我的代码与开源项目
+  - name: 个人主页
+    url: https://example.com
+    description: 占位示例,替换成你自己的主页

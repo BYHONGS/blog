@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Sites - {{ site_name }}{% endblock %}
+{% block content %}
+<h1 class="page-title">Sites</h1>
+<div class="card-grid">
+  {% for site in sites %}
+  <a class="card site-card" href="{{ site.url }}" target="_blank" rel="noopener noreferrer">
+    <h2 class="card-title">{{ site.name }}</h2>
+    <p class="card-excerpt">{{ site.description }}</p>
+    <span class="site-url">{{ site.url }}</span>
+  </a>
+  {% else %}
+  <p class="empty">暂无站点。</p>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for post in posts %}
+  <url>
+    <loc>{{ url_for('main.post', slug=post.slug, _external=True) }}</loc>
+    <lastmod>{{ post.date.strftime('%Y-%m-%d') }}</lastmod>
+  </url>
+{%- endfor %}
+  <url><loc>{{ url_for('main.index', _external=True) }}</loc></url>
+  <url><loc>{{ url_for('main.about', _external=True) }}</loc></url>
+  <url><loc>{{ url_for('main.sites', _external=True) }}</loc></url>
+</urlset>

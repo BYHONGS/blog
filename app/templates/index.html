@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block canonical %}{{ url_for('main.index', page=page if page > 1 else None, _external=True) }}{% endblock %}
+{% block content %}
+<div class="card-grid">
+  {% for post in posts %}
+  <a class="card" href="{{ url_for('main.post', slug=post.slug) }}">
+    <h2 class="card-title">{{ post.title }}</h2>
+    <time class="card-date">{{ post.date.strftime('%Y-%m-%d') }}</time>
+    <p class="card-excerpt">{{ post.description }}</p>
+  </a>
+  {% else %}
+  <p class="empty">还没有文章。</p>
+  {% endfor %}
+</div>
+
+{% if total_pages > 1 %}
+<nav class="pagination">
+  {% if page > 1 %}
+  <a href="{{ url_for('main.index', page=page - 1) }}">上一页</a>
+  {% else %}
+  <span class="disabled">上一页</span>
+  {% endif %}
+  <span class="page-info">{{ page }} / {{ total_pages }}</span>
+  {% if page < total_pages %}
+  <a href="{{ url_for('main.index', page=page + 1) }}">下一页</a>
+  {% else %}
+  <span class="disabled">下一页</span>
+  {% endif %}
+</nav>
+{% endif %}
+{% endblock %}

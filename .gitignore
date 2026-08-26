@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# 虚拟环境
+.venv/
+venv/
+
+# 环境变量与密钥(服务器上的 .env 含 SECRET/WEBHOOK_SECRET/ADMIN_PASSWORD)
+.env
+.admin_password
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# 系统
+.DS_Store
+Thumbs.db
+
+# 构建产物
+dist/
+build/
+*.log
+
+# ���ؾ�̬��������
+website/

@@ -1,0 +1,11 @@
+{% extends "admin/base_admin.html" %}
+{% block content %}
+<div class="login-box">
+  <h1>登录后台</h1>
+  <form method="post">
+    <label for="password">密码</label>
+    <input type="password" id="password" name="password" autofocus required>
+    <button type="submit" class="btn btn-primary">登录</button>
+  </form>
+</div>
+{% endblock %}

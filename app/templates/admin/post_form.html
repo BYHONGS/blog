@@ -1,0 +1,42 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}{{ '写新文章' if is_new else '编辑:' + post.title }} - {{ site_name }}{% endblock %}
+{% block content %}
+<div class="admin-section">
+  <div class="section-head">
+    <h2>{{ '写新文章' if is_new else '编辑文章' }}</h2>
+    <a href="{{ url_for('admin.dashboard') }}">返回列表</a>
+  </div>
+  <form method="post" class="post-form">
+    <div class="form-row">
+      <div class="form-field grow">
+        <label for="title">标题</label>
+        <input type="text" id="title" name="title" value="{{ post.title }}" required>
+      </div>
+      <div class="form-field">
+        <label for="slug">Slug(发布后不可改)</label>
+        <input type="text" id="slug" name="slug" value="{{ post.slug }}"
+               pattern="[a-z0-9]+(-[a-z0-9]+)*" {{ '' if is_new else 'readonly' }} required>
+      </div>
+      <div class="form-field">
+        <label for="date">日期</label>
+        <input type="date" id="date" name="date" value="{{ post.date }}" required>
+      </div>
+    </div>
+    <div class="form-field">
+      <label for="description">摘要(留空则自动截取正文开头)</label>
+      <input type="text" id="description" name="description" value="{{ post.description }}">
+    </div>
+    <div class="form-field">
+      <label for="body">正文(Markdown)</label>
+      <textarea id="body" name="body" rows="20" required>{{ post.body }}</textarea>
+    </div>
+    <div class="form-actions">
+      <label class="checkbox">
+        <input type="checkbox" name="draft" {{ 'checked' if post.draft }}>
+        存为草稿(draft: true,前台不渲染)
+      </label>
+      <button type="submit" class="btn btn-primary">保存</button>
+    </div>
+  </form>
+</div>
+{% endblock %}
